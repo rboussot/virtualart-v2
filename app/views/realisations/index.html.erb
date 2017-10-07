@@ -1,0 +1,44 @@
+<!-- =============== ROW & CONTAINER =============== -->
+<div class="container">
+  <div class="row">
+    <!-- =============== VOLET GAUCHE =============== -->
+    <div class="col-sm-8">
+    <!-- ===== REALISATIONS ===== -->
+    <% @courses.each do |course| %>
+      <div class= "block height"
+        style= "background-color: rgba(<%= course.color %>, 0.35);border-color: rgb(<%= course.color %>);">
+        <%= image_tag course.puce, class: "puce" %>
+        <h4 style= "text-shadow: 0 0 0.2em rgba(<%= course.color %>, 1), 0 0 0.2em rgba(<%= course.color %>, 1)"><%= course.title %></h4>
+        <div class= "realisation-center">
+          <!-- === Vignettes === -->
+          <% realisations = Realisation.where(course: course).order(updated_at: :desc) %>
+          <% realisations.each do |realisation| %>
+            <%= link_to realisation_path(realisation), remote: true do %>
+              <%= image_tag realisation.thumbnail, class: "realisation-thumbnail", id: realisation.id %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+<!-- =============== CLOSE VOLET GAUCHE =============== -->
+    </div>
+    <!-- =============== VOLET DROIT =============== -->
+    <div class="col-sm-4">
+    <div class= "big-margin hidden-xs hidden-sm"></div>
+      <!-- ===== À PROPOS ===== -->
+      <% if @propos.visible %>
+      <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @propos.title %></h4>
+        <p><%= @propos.description.gsub("\n", "<br/>").html_safe %></p>
+      </div>
+      <% end %>
+    </div>
+<!-- =============== CLOSE ROW & CONTAINER =============== -->
+  </div>
+</div>
+
+<!-- =============== MODALE ==================== -->
+<div class="modal"></div>
+
+

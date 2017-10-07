@@ -1,0 +1,13 @@
+.realisation-thumbnail {
+  width: 111px;
+  height: 111px;
+  margin: 5px 3px;
+  transition: all 250ms ease;
+  &:hover {
+    -webkit-filter: brightness(150%);
+  }
+}
+
+.realisation-center {
+  text-align: center;
+}
