@@ -1,2 +1,164 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= render "shared/carousel" %>
+<!-- =============== BANNIERE DE BASE =============== -->
+<!-- <div class="homeban" >
+  <%= image_tag @carousels.shuffle.last.picture, class: "home-ban" %>
+</div> -->
+<!-- =============== ROW & CONTAINER =============== -->
+<div class="container">
+  <div class="row">
+<!-- =============== VOLET GAUCHE =============== -->
+    <div class="col-sm-8">
+      <!-- ==== LOGICIELS ==== -->
+      <% if @home_logiciel.visible %>
+        <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+          <h4><%= @home_logiciel.title %></h4>
+          <div class= "mini-margin"></div>
+          <p><%= @home_logiciel.description.gsub("\n", "<br/>").html_safe %></p>
+          <div class= "home-software">
+            <% @softwares.each do |software| %>
+              <div class= "logo">
+                <% if software.logo.present? %>
+                  <%= image_tag software.logo %><br>
+                  <%= software.title %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <%= link_to "Découvrez mes cours...", courses_path, class: "inscription" %>
+        </div>
+      <% end %>
+      <!-- ==== VIDEO  ==== -->
+      <% if @home_video.visible %>
+        <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+          <h4><%= @home_video.title %></h4>
+            <div class= "home-video">
+              <div class="embed-responsive embed-responsive-16by9 home-video img-border">
+              <iframe width="854" height="480" src= "https://www.youtube.com/embed/<%= @home_video.link %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+              </div>
+              <div class= "mini-margin"></div>
+              <p><%= @home_video.description.gsub("\n", "<br/>").html_safe %></p>
+          </div>
+          <%= link_to "En savoir plus...", courses_path, class: "inscription" %>
+        </div>
+      <% end %>
+      <!-- ==== ESPACE ==== -->
+      <% if @home_espace.visible %>
+        <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+          <h4><%= @home_espace.title %></h4>
+          <div class= "row">
+            <div class="home-espace col-sm-8">
+              <%= image_tag @home_espace.picture, class: "img-border" %>
+            </div>
+            <div class= "home-espace col-sm-4">
+              <p><%= @home_espace.description.gsub("\n", "<br/>").html_safe %></p>
+          <%= link_to "En savoir plus...", contact_path, class: "inscription" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!-- ==== MATERIEL ==== -->
+      <% if @home_materiel.visible %>
+        <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+          <div class= "home-materiel">
+            <h4><%= @home_materiel.title %></h4>
+            <%= image_tag @home_materiel.picture %>
+            <div class= "mini-margin"></div>
+            <p><%= @home_materiel.description.gsub("\n", "<br/>").html_safe %></p>
+          </div>
+        </div>
+      <% end %>
+      <!-- =============== CLOSE VOLET GAUCHE =============== -->
+    </div>
+<!-- =============== VOLET DROIT =============== -->
+    <div class="col-sm-4">
+      <!-- ==== NEWS ==== -->
+      <% if @news.visible %>
+        <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+          <div class="home-news">
+            <h4><%= @news.title %></h4>
+            <p><%= @news.description.gsub("\n", "<br/>").html_safe %></p>
+          </div>
+          <% if current_user %>
+            <%= link_to edit_user_path(current_user) do %>
+            <div class= "inscription">
+              Consulter le formulaire d'inscription
+            </div>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+            <div class= "inscription">
+              Créer d'abord un compte gratuit !
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      <!-- ==== POST ==== -->
+      <% if @post.visible %>
+        <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+          <div class="home-post">
+            <h4><%= @post.title %></h4>
+            <% if @post.description.present? %>
+              <p><%= @post.description %></p>
+            <% end %>
+            <div class= "mini-margin"></div>
+            <%= link_to image_tag(@post.picture, class: "full img-border"), @post.link, target: :_blank%>
+          </div>
+          <%= link_to "Les réalisations des élèves...", realisations_path, class: "inscription" %>
+        </div>
+      <% end %>
+      <!-- ==== PROFIL ==== -->
+      <% if @profil.visible %>
+          <div class= "block">
+          <%= image_tag "puce-v5.png", class: "puce" %>
+              <h4><%= @profil.title %></h4>
+              <div class= "mini-margin"></div>
+              <% if @profil.picture.present? %>
+                <%= link_to profile_path do %>
+                  <%= image_tag @profil.picture, class: "full img-border" %>
+                <% end %>
+              <% end %>
+              <%= link_to @profil.description, profile_path, class: "inscription" %>
+          </div>
+      <% end %>
+      <!-- ==== COEUR ==== -->
+      <% if @coeur.visible %>
+        <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+          <div class="home-coeur">
+            <h4><%= @coeur.title %></h4>
+            <% if @coeur.picture.present? %>
+              <%= link_to @coeur.link, target: :_blank do %>
+                <%= image_tag @coeur.picture, class: "full img-border"%>
+              <% end %>
+              <div class= "mini-margin"></div>
+              <p><%= @coeur.description %></p>
+            <% elsif %>
+              <div class="embed-responsive embed-responsive-16by9 home-video">
+                <iframe src= "https://www.youtube.com/embed/<%= @coeur.link %>?showinfo=0&rel=0" frameborder="1" allowfullscreen></iframe>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <!-- ==== LIVREDOR ==== -->
+      <% if @livredor.visible %>
+        <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+          <div class="home-coeur">
+            <h4><%= @livredor.title %></h4>
+            <%= image_tag @livredor.picture, class: "right" %>
+          </div>
+        </div>
+      <% end %>
+    <!-- =============== CLOSE VOLET DROIT =============== -->
+    </div>
+<!-- =============== ROW & CONTAINER =============== -->
+  </div>
+</div>

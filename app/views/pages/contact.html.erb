@@ -1,0 +1,60 @@
+<!-- =============== ROW & CONTAINER =============== -->
+<div class="container">
+  <div class="row">
+    <!-- =============== VOLET GAUCHE =============== -->
+    <div class="col-sm-8">
+    <!-- ===== LIEU ===== -->
+      <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @lieu.title %></h4>
+
+          <div class="embed-responsive embed-responsive-16by9 center img-border">
+            <iframe src="<%= @lieu.description %>" width="496" height="504" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+
+        <%= link_to "Agrandir la carte", @lieu.link, target: :_blank, class: "center" %>
+        <div style="margin-top:20px"></div>
+        <% if @lieu.picture.present? %>
+          <%= image_tag @lieu.picture, class: "center img-border" %>
+        <% end %>
+      </div>
+    <!-- =============== CLOSE VOLET GAUCHE =============== -->
+    </div>
+    <!-- =============== VOLET DROIT =============== -->
+    <div class="col-sm-4">
+    <div class= "big-margin hidden-xs hidden-sm"></div>
+      <!-- ===== INSCRIPTION ===== -->
+      <div class= "block">
+      <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @inscription.title %></h4>
+          <p><%= @inscription.description.gsub("\n", "<br/>").html_safe %></p>
+          <% if current_user %>
+            <%= link_to edit_user_path(current_user) do %>
+            <div class= "inscription">
+              Consulter le formulaire d'inscription
+            </div>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+            <div class= "inscription">
+              Créer d'abord un compte gratuit !
+            </div>
+            <% end %>
+          <% end %>
+      </div>
+      <!-- ===== COORDONNÉES ===== -->
+      <div class= "block">
+      <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @coo.title %></h4>
+          <p><%= @coo.description.gsub("\n", "<br/>").html_safe %></p>
+      </div>
+      <!-- ===== OUVERTURE ===== -->
+      <div class= "block">
+      <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @ouverture.title %></h4>
+          <p><%= @ouverture.description.gsub("\n", "<br/>").html_safe %></p>
+      </div>
+<!-- =============== CLOSE ROW & CONTAINER =============== -->
+    </div>
+  </div>
+</div>

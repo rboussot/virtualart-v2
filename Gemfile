@@ -8,6 +8,8 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.0.0'
 gem 'redis'
+gem 'pundit'
+gem "rails_admin"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -18,10 +20,12 @@ gem 'simple_form'
 gem 'uglifier'
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'listen', '~> 3.0.5'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem "letter_opener"
 end

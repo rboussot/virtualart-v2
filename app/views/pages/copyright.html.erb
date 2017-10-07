@@ -1,0 +1,58 @@
+<!-- =============== ROW & CONTAINER =============== -->
+<div class="container">
+  <div class="row">
+    <!-- =============== VOLET GAUCHE =============== -->
+    <div class="col-sm-8">
+    <!-- ===== COURS ===== -->
+      <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4>Copyright</h4>
+        <p><%= @copyright.description.gsub("\n", "<br/>").html_safe %></p>
+      </div>
+    <!-- =============== CLOSE VOLET GAUCHE =============== -->
+    </div>
+    <!-- =============== VOLET DROIT =============== -->
+    <div class="col-sm-4">
+    <div class= "big-margin hidden-xs hidden-sm"></div>
+      <!-- ===== INSCRIPTION ===== -->
+      <div class= "block">
+      <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @inscription.title %></h4>
+          <p><%= @inscription.description.gsub("\n", "<br/>").html_safe %></p>
+          <% if current_user %>
+            <%= link_to edit_user_path(current_user) do %>
+            <div class= "inscription">
+              Consulter le formulaire d'inscription
+            </div>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+            <div class= "inscription">
+              Créer d'abord un compte gratuit !
+            </div>
+            <% end %>
+          <% end %>
+      </div>
+      <!-- ===== COORDONNÉES ===== -->
+      <div class= "block">
+      <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @coo.title %></h4>
+          <p><%= @coo.description.gsub("\n", "<br/>").html_safe %></p>
+      </div>
+      <!-- ==== PROFIL ==== -->
+      <% if @profil.visible %>
+        <%= link_to profile_path do %>
+          <div class= "block">
+          <%= image_tag "puce-v5.png", class: "puce" %>
+              <h4><%= @profil.title %></h4>
+              <%= @profil.description %>
+              <% if @profil.picture.present? %>
+                <%= image_tag @profil.picture, class: "full" %>
+              <% end %>
+          </div>
+        <% end %>
+      <% end %>
+<!-- =============== CLOSE ROW & CONTAINER =============== -->
+    </div>
+  </div>
+</div>

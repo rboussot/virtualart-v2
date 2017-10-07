@@ -1,0 +1,85 @@
+<!-- =============== ROW & CONTAINER =============== -->
+<div class="container">
+  <div class="row">
+    <!-- =============== VOLET GAUCHE =============== -->
+    <div class="col-sm-8">
+    <!-- ===== RECAP COURS ===== -->
+    <div class= "block">
+      <%= image_tag "puce-v5.png", class: "puce" %>
+      <h4>Récapitulatif des cours qui vous intéressent</h4>
+      <% if @users_courses && @users_courses.count > 0 %>
+        <% @users_courses.each do |user_course| %>
+          <p>
+            <%= user_course.course.title %> - <%= user_course.timeslot.title %> -
+            <% if user_course.confirmed && user_course.end && user_course.end.strftime > Date.today.strftime %>
+              <span class= "confirmed">Ce cours est bien confirmé jusqu'au <%= user_course.end %></span>
+            <% elsif user_course.end && user_course.end && user_course.end.strftime < Date.today.strftime %>
+              <span class= "ended">Ce cours est terminé depuis le <%= user_course.end %></span>
+            <% else %>
+              <span class="not-confirmed">Je vous contacterai pour confirmer cette éventualité.</span>
+            <% end %>
+          </p>
+        <% end %>
+      <% else %>
+        <%= link_to edit_user_path(current_user) do %>
+          <p>Remplissez le formulaire pour vous inscrire à l'un de mes cours !</p>
+        <% end %>
+      <% end %>
+    </div>
+    <!-- ===== RECAP STAGES ===== -->
+    <div class= "block">
+      <%= image_tag "puce-v5.png", class: "puce" %>
+      <h4>Récapitulatif des stages qui vous intéressent</h4>
+      <% @users_stages.each do |user_stage| %>
+        <p>
+          <%= user_stage.stage.stagetype.title %> - <%= user_stage.stage.timeslot %> -
+          <% if user_stage.confirmed %>
+            <span class= "confirmed">Le stage est bien confirmé.</span>
+          <% else %>
+            <span class="not-confirmed">Je vous contacterai pour confirmer.</span>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+    <!-- ===== RETOUR AU FORMULAIRE ===== -->
+    <%= link_to edit_user_path(current_user) do %>
+      <div class= "inscription">
+        Modifier le formulaire
+      </div>
+    <% end %>
+    <!-- ===== RETOUR À L'ACCUEIL ===== -->
+    <%= link_to root_path do %>
+      <div class= "inscription">
+        Revenir à l'accueil
+      </div>
+    <% end %>
+    <!-- =============== CLOSE VOLET GAUCHE =============== -->
+    </div>
+    <!-- =============== VOLET DROIT =============== -->
+    <div class="col-sm-4">
+    <div class= "big-margin hidden-xs hidden-sm"></div>
+      <!-- ===== PLANNING COURS ===== -->
+      <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @planning.title %></h4>
+        <p><%= @planning.description.gsub("\n", "<br/>").html_safe %></p>
+      </div>
+      <!-- ===== TARIF COURS ===== -->
+      <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @tarifs1.title %></h4>
+        <p><%= @tarifs1.description.gsub("\n", "<br/>").html_safe %></p>
+        <%= image_tag @tarifs1.picture, class: "full" %><br><br>
+        <p><%= @tarifs2.description.gsub("\n", "<br/>").html_safe %></p>
+        <%= image_tag @tarifs2.picture, class: "full" %><br><br>
+      </div>
+      <!-- ===== INFOS STAGES ===== -->
+      <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+        <h4><%= @infos.title %></h4>
+        <p><%= @infos.description.gsub("\n", "<br/>").html_safe %></p>
+      </div>
+<!-- =============== CLOSE ROW & CONTAINER =============== -->
+    </div>
+  </div>
+</div>
