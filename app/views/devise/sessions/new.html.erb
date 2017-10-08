@@ -19,7 +19,7 @@
             <% @email = Block.find_by(tag: "coo") %>
             <i>Réinitialiser le mot de passe ?</i><br>
             <i>Contactez-moi par email :</i><br>
-            <i><%= mail_to @email, "#{@email.link}" %><br></i>
+            <i><%= mail_to @email.link, "#{@email.link}" %><br></i>
           <% end -%>
         </div>
 

@@ -5193,7 +5193,7 @@ coo = Block.create!(
   06.74.75.30.23
   09.54.11.14.31", # Passer à la ligne normalement
   picture: "",
-  link: "",
+  link: "virtual.art31@gmail.com",
   visible: true,
   footer: false)
 p coo
