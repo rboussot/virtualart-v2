@@ -6,7 +6,7 @@
     <!-- ===== SIGNUP ===== -->
       <div class= "block">
         <%= image_tag "puce-v5.png", class: "puce" %>
-        <h4>Créer un compte gratuit</h4>
+        <h4>Réinitialiser mon mot de passe :</h4>
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= f.error_notification %>
             <div class="form-inputs">
@@ -15,7 +15,7 @@
               <%= f.input :password_confirmation, required: true %>
             </div>
             <div class="form-actions">
-              <%= f.button :submit, "Je m'inscris" %>
+              <%= f.button :submit, "Envoyer" %>
             </div>
           <% end %>
     </div>
