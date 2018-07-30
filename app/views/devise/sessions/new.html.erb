@@ -15,11 +15,7 @@
         </div>
         <div class= "forgot">
           <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-            <!-- <i><%= link_to "Mot de passe oublié ?", new_password_path(resource_name) %><br></i> -->
-            <% @email = Block.find_by(tag: "coo") %>
-            <i>Réinitialiser le mot de passe ?</i><br>
-            <i>Contactez-moi par email :</i><br>
-            <i><%= mail_to @email.link, "#{@email.link}" %><br></i>
+            <i><%= link_to "Mot de passe oublié ?", new_password_path(resource_name) %><br></i>
           <% end -%>
         </div>
 
