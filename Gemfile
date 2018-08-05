@@ -18,7 +18,8 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
-gem 'mailgunner', '~> 2.4'
+gem 'mailgunner', '~> 2.5.0'
+gem 'mail', '2.6.5'
 
 group :development, :test do
   gem 'better_errors'
