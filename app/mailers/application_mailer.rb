@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'postmaster@mg.virtualart.pro'
+  default from: 'postmaster@virtualart.pro'
   layout 'mailer'
 end
