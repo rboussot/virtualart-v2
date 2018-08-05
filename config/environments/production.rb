@@ -41,7 +41,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -57,6 +57,18 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "virtualart-v1_#{Rails.env}"
   config.action_mailer.perform_caching = false
+  # config.action_mailer.delivery_method = :smtp
+  # SMTP settings for mailgun
+  # ActionMailer::Base.smtp_settings = {
+  #   :address              => 'smtp.mailgun.org',
+  #   :port                 => 587,
+  #   :domain               => ENV['domain'],
+  #   :user_name            => ENV['mailgun_username'],
+  #   :password             => ENV['mailgun_password'],
+  #   :authentication       => :plain,
+  # }
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {domain: 'www.virtualart.pro'}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
