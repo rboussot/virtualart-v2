@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'mailgunner', '~> 2.4'
 
 group :development, :test do
   gem 'better_errors'
