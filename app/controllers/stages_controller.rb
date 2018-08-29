@@ -7,6 +7,7 @@ class StagesController < ApplicationController
     @stagetypes = Stagetype.where(visible: true)
     @inscription = Block.find_by(tag: "inscription_stage")
     @infos = Block.find_by(tag: "infos")
+    @tarifs1 = Block.find_by(tag: "tarifs1")
   end
 
 end

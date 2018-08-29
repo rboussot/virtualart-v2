@@ -21,44 +21,54 @@
     <div class="col-sm-4">
     <div class= "big-margin hidden-xs hidden-sm"></div>
       <!-- ===== INSCRIPTION ===== -->
-      <div class= "block">
-      <%= image_tag "puce-v5.png", class: "puce" %>
-        <h4><%= @inscription.title %></h4>
-          <p><%= @inscription.description.gsub("\n", "<br/>").html_safe %></p>
-          <% if current_user %>
-            <%= link_to edit_user_path(current_user) do %>
-            <div class= "inscription">
-              Consulter le formulaire d'inscription
-            </div>
+      <% if @inscription.visible %>
+        <div class= "block">
+        <%= image_tag "puce-v5.png", class: "puce" %>
+          <h4><%= @inscription.title %></h4>
+            <p><%= @inscription.description.gsub("\n", "<br/>").html_safe %></p>
+            <% if current_user %>
+              <%= link_to edit_user_path(current_user) do %>
+              <div class= "inscription">
+                Consulter le formulaire d'inscription
+              </div>
+              <% end %>
+            <% else %>
+              <%= link_to new_user_session_path do %>
+              <div class= "inscription">
+                Créer d'abord un compte gratuit !
+              </div>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to new_user_session_path do %>
-            <div class= "inscription">
-              Créer d'abord un compte gratuit !
-            </div>
-            <% end %>
-          <% end %>
-      </div>
+        </div>
+      <% end %>
       <!-- ===== PLANNING ===== -->
-      <div class= "block">
-        <%= image_tag "puce-v5.png", class: "puce" %>
-        <h4><%= @planning.title %></h4>
-        <p><%= @planning.description.gsub("\n", "<br/>").html_safe %></p>
-      </div>
+      <% if @planning.visible %>
+        <div class= "block">
+          <%= image_tag "puce-v5.png", class: "puce" %>
+          <h4><%= @planning.title %></h4>
+          <p><%= @planning.description.gsub("\n", "<br/>").html_safe %></p>
+        </div>
+      <% end %>
       <!-- ===== TARIF ATELIER ===== -->
-      <div class= "block">
-        <%= image_tag "puce-v5.png", class: "puce" %>
-        <h4><%= @tarifs1.title %></h4>
-        <p><%= @tarifs1.description.gsub("\n", "<br/>").html_safe %></p>
-        <%= image_tag @tarifs1.picture, class: "full" %><br><br>
-      </div>
+      <% if @tarifs1.visible %>
+        <%= link_to stages_path do %>
+          <div class= "block">
+            <%= image_tag "puce-v5.png", class: "puce" %>
+            <h4><%= @tarifs1.title %></h4>
+            <p><%= @tarifs1.description.gsub("\n", "<br/>").html_safe %></p>
+            <%= image_tag @tarifs1.picture, class: "full" %><br><br>
+          </div>
+        <% end %>
+      <% end %>
       <!-- ===== TARIF VIDEOS ===== -->
-      <div class= "block">
-        <%= image_tag "puce-v5.png", class: "puce" %>
-        <h4><%= @tarifs2.title %></h4>
-        <p><%= @tarifs2.description.gsub("\n", "<br/>").html_safe %></p>
-        <%= image_tag @tarifs2.picture, class: "full" %><br><br>
-      </div>
+      <% if @tarifs2.visible %>
+        <div class= "block">
+          <%= image_tag "puce-v5.png", class: "puce" %>
+          <h4><%= @tarifs2.title %></h4>
+          <p><%= @tarifs2.description.gsub("\n", "<br/>").html_safe %></p>
+          <%= image_tag @tarifs2.picture, class: "full" %><br><br>
+        </div>
+      <% end %>
     </div>
 <!-- =============== CLOSE ROW & CONTAINER =============== -->
   </div>

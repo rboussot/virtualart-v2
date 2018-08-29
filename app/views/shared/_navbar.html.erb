@@ -77,9 +77,9 @@
     <% end %>
     <!-- ===== LIENS ===== -->
     <%= link_to "Accueil", root_path, class: "navbar-link #{@menu_accueil}" %>
-    <%= link_to "Cours", courses_path, class: "navbar-link #{@menu_cours}"  %>
-    <%= link_to "Stages", stages_path, class: "navbar-link #{@menu_stages}"  %>
-    <%= link_to "Réalisations", realisations_path, class: "navbar-link #{@menu_realisations}"  %>
+    <%= link_to "Cursus", courses_path, class: "navbar-link #{@menu_cours}"  %>
+    <%= link_to "Offres & tarifs", stages_path, class: "navbar-link #{@menu_stages}"  %>
+    <%= link_to "Travaux d'élèves", realisations_path, class: "navbar-link #{@menu_realisations}"  %>
     <div class="dropdown">
       <a data-toggle="dropdown" class="navbar-link <%= @menu_videos %>">Vidéos</a>
       <ul class="dropdown-menu dropdown-menu-right navbar-virtualart-dropdown-menu">
@@ -92,7 +92,7 @@
       </ul>
     </div>
     <%= link_to "Contact", contact_path, class: "navbar-link #{@menu_contact}" %>
-    <%= link_to "Tarifs", tarifs_path, class: "navbar-link #{@menu_tarifs}" %>
+    <%#= link_to "Tarifs", tarifs_path, class: "navbar-link #{@menu_tarifs}" %>
   </div>
 
   <!-- ========== MOBILE ONLY ========== -->
@@ -112,7 +112,7 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-virtualart-dropdown-menu">
         <li><%= link_to "Accueil", root_path, class: "navbar-link" %></li>
         <li><%= link_to "Cours / Vidéos", courses_path, class: "navbar-link"  %></li>
-        <li><%= link_to "Stages", stages_path, class: "navbar-link"  %></li>
+        <li><%= link_to "Mes offres", stages_path, class: "navbar-link"  %></li>
         <li><%= link_to "Réalisations", realisations_path, class: "navbar-link"  %></li>
         <li><%= link_to "Contact", contact_path, class: "navbar-link" %></li>
         <li><%= link_to "Tarifs", tarifs_path, class: "navbar-link" %></li>
