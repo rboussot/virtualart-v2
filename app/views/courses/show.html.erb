@@ -44,30 +44,34 @@
     <div class="col-sm-4">
     <div class= "big-margin hidden-xs hidden-sm"></div>
       <!-- ===== INSCRIPTION ===== -->
-      <div class= "block">
-      <%= image_tag "puce-v5.png", class: "puce" %>
-        <h4><%= @inscription.title %></h4>
-          <p><%= @inscription.description.gsub("\n", "<br/>").html_safe %></p>
-          <% if current_user %>
-            <%= link_to edit_user_path(current_user) do %>
-            <div class= "inscription">
-              Consulter le formulaire d'inscription
-            </div>
-            <% end %>
-          <% else %>
-            <%= link_to new_user_session_path do %>
-            <div class= "inscription">
-              Créer d'abord un compte gratuit !
-            </div>
-            <% end %>
-          <% end %>
-      </div>
-      <!-- ===== À PROPOS ===== -->
-      <div class= "block">
+      <% if @inscription.visible %>
+        <div class= "block">
         <%= image_tag "puce-v5.png", class: "puce" %>
-        <h4><%= @course.title %></h4>
-        <p><%= @course.description.gsub("\n", "<br/>").html_safe %></p>
-      </div>
+          <h4><%= @inscription.title %></h4>
+            <p><%= @inscription.description.gsub("\n", "<br/>").html_safe %></p>
+            <% if current_user %>
+              <%= link_to edit_user_path(current_user) do %>
+              <div class= "inscription">
+                Consulter le formulaire d'inscription
+              </div>
+              <% end %>
+            <% else %>
+              <%= link_to new_user_session_path do %>
+              <div class= "inscription">
+                Créer d'abord un compte gratuit !
+              </div>
+              <% end %>
+            <% end %>
+        </div>
+      <% end %>
+      <!-- ===== À PROPOS ===== -->
+      <% if @course.visible %>
+        <div class= "block">
+          <%= image_tag "puce-v5.png", class: "puce" %>
+          <h4><%= @course.title %></h4>
+          <p><%= @course.description.gsub("\n", "<br/>").html_safe %></p>
+        </div>
+      <% end %>
     </div>
 <!-- =============== CLOSE ROW & CONTAINER =============== -->
   </div>

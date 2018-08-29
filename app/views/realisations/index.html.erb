@@ -27,11 +27,11 @@
     <div class= "big-margin hidden-xs hidden-sm"></div>
       <!-- ===== À PROPOS ===== -->
       <% if @propos.visible %>
-      <div class= "block">
-        <%= image_tag "puce-v5.png", class: "puce" %>
-        <h4><%= @propos.title %></h4>
-        <p><%= @propos.description.gsub("\n", "<br/>").html_safe %></p>
-      </div>
+        <div class= "block">
+          <%= image_tag "puce-v5.png", class: "puce" %>
+          <h4><%= @propos.title %></h4>
+          <p><%= @propos.description.gsub("\n", "<br/>").html_safe %></p>
+        </div>
       <% end %>
     </div>
 <!-- =============== CLOSE ROW & CONTAINER =============== -->
