@@ -4,7 +4,7 @@ class StagesController < ApplicationController
   def index
     @menu_stages = "active"
     @stages = Stage.where(visible: true)
-    @stagetypes = Stagetype.where(visible: true)
+    @stagetypes = Stagetype.where(visible: true).order(updated_at: :desc)
     @inscription = Block.find_by(tag: "inscription_stage")
     @infos = Block.find_by(tag: "infos")
     @tarifs1 = Block.find_by(tag: "tarifs1")

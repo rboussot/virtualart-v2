@@ -68,14 +68,16 @@ class UsersController < ApplicationController
     end
     # Construire users_stage
     UsersStage.where(user: @user).where(confirmed: false).destroy_all
-    if params[:user][:stage_ids][1].present?
-      params[:user][:stage_ids][1..-1].each do |stage_id|
-        @stage = Stage.find(stage_id)
-        @users_stage = UsersStage.new
-        @users_stage.stage = @stage
-        @users_stage.user = @user
-        unless UsersStage.where(user: @user).where(stage: stage_id).present?
-          @users_stage.save!
+    unless params[:user][:stage_ids].nil?
+      if params[:user][:stage_ids][1].present?
+        params[:user][:stage_ids][1..-1].each do |stage_id|
+          @stage = Stage.find(stage_id)
+          @users_stage = UsersStage.new
+          @users_stage.stage = @stage
+          @users_stage.user = @user
+          unless UsersStage.where(user: @user).where(stage: stage_id).present?
+            @users_stage.save!
+          end
         end
       end
     end
