@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
   private
 
   def find_course
-    @course = Course.where(visible: true).find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def find_softwares
