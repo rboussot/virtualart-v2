@@ -26,7 +26,7 @@
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
           <%= f.association :courses, collection: Course.where(visible: true), as: :check_boxes, label: "Cochez les cursus qui vous intéressent", disabled: @disabled_courses %>
-          <%= f.association :timeslots, collection: Timeslot.where(visible: true),as: :check_boxes, label: "Indiquez vos disponibilités :", disabled: @disabled_timeslots %>
+          <%= f.association :timeslots, collection: Timeslot.where(visible: true),as: :check_boxes, label: "Indiquez l'offre retenue :", disabled: @disabled_timeslots %>
     </div>
   </div>
 </div>
