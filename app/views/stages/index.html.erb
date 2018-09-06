@@ -41,7 +41,9 @@
                   <% stages = Stage.where(stagetype: stagetype) %>
                   <div class="buttons-timeslots">
                   <% stages.each do |stage| %>
-                    <div class="button-timeslot"><%= stage.timeslot %></div>
+                    <% if stage.visible %>
+                      <div class="button-timeslot"><%= stage.timeslot %></div>
+                    <% end %>
                   <% end %>
                   </div>
                 <div class= "mini-margin"></div>
