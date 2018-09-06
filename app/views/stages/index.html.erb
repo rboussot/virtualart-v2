@@ -12,7 +12,8 @@
               <%= image_tag stagetype.puce, class: "puce" %>
                 <h4 style= "text-shadow: 0 0 0.2em rgba(<%= stagetype.color %>, 0.5), 0 0 0.2em rgba(<%= stagetype.color %>, 0.5)"><%= stagetype.title %></h4>
                 <div class= "mini-margin"></div>
-                <%= image_tag stagetype.picture, class: "left", style: "border: 4px solid rgb("+stagetype.color+");" %>
+                  <%= image_tag stagetype.picture, class: "left", style: "border: 4px solid rgb("+stagetype.color+");" %>
+                  <div class="hidden-sm hidden-md hidden-lg big-margin"><br><br><br><br><br><br></div>
                 <p><%= stagetype.description.gsub("\n", "<br/>").html_safe %></p>
                 <div class= "small-margin"></div>
                   <% stages = Stage.where(stagetype: stagetype) %>
